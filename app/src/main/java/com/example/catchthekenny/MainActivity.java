@@ -58,41 +58,46 @@ Runnable runnable;
        imageView8 = findViewById(R.id.imageView8);
        imageView9 = findViewById(R.id.imageView9);
        imageArray  =  new ImageView[] {imageView1, imageView2, imageView3,imageView4,imageView5,imageView6,imageView7,imageView8,imageView9};
-       hideImages();
         new CountDownTimer(10000, 1000) {
-           @Override
-           public void onTick(long millisUntilFinished) {
-            timeText.setText("Time: " + millisUntilFinished /1000);
-           }
+            @Override
+            public void onTick(long millisUntilFinished) {
+                timeText.setText("Time: " + millisUntilFinished /1000);
+            }
 
-           @Override
-           public void onFinish() {
-            timeText.setText("Time Off");
-            handler.removeCallbacks(runnable);
-               for(ImageView images: imageArray){
-                   images.setVisibility(View.INVISIBLE);
-               }
-               AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-               alert.setTitle("Restart");
-               alert.setMessage("Ar you sure to restart game ? ");
-               alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = getIntent();
-                    finish();
-                    startActivity(intent);
-                   }
-               });
-               alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                   @Override
-                   public void onClick(DialogInterface dialog, int which) {
-                       Toast.makeText( MainActivity.this,"Game Over",  Toast.LENGTH_LONG).show();
-                   }
-               });
-               alert.show();
-           }
-       }.start();
+            @Override
+            public void onFinish() {
+                timeText.setText("Time Off");
+                handler.removeCallbacks(runnable);
+                for(ImageView images: imageArray){
+                    images.setVisibility(View.INVISIBLE);
+                }
+                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                alert.setTitle("Restart");
+                alert.setMessage("Ar you sure to restart game ? ");
+                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = getIntent();
+                        finish();
+                        startActivity(intent);
+                    }
+                });
+                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText( MainActivity.this,"Game Over",  Toast.LENGTH_LONG).show();
+                    }
+                });
+                alert.show();
+            }
+        }.start();
+        hideImages();
+
     }
+
+
+
+
     public  void  increaseScore(View view){
     score++;
 
