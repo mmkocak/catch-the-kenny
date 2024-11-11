@@ -1,3 +1,3 @@
 # Kenny'yi yakala oyunu 
- @atilsamancioglu Android eğitiminden bir oyun
+ [@atilsamancioglu](https://github.com/atilsamancioglu) Android eğitiminden bir oyun
 
